@@ -10,8 +10,12 @@ import Button from '@mui/material/Button';
 import TextFieldContainer from 'components/ui/TextFieldContainer';
 
 import '../../css/form.css';
+import useForm from 'components/hooks/useForm';
+import validateInfoLogin from 'components/helpers/validateInfoLogin';
 
 const Form = ({ title, fields, aLink, href }) => {
+    const { handleChange, handleSubmit, errors } = useForm(validateInfoLogin);
+
     return (
         <Box
             sx={{
@@ -29,11 +33,15 @@ const Form = ({ title, fields, aLink, href }) => {
             </Typography>
             <Box
                 component="form"
-                /* onSubmit={handleSubmit} */
+                onSubmit={handleSubmit}
                 noValidate
                 sx={{ mt: 1 }}
             >
-                <TextFieldContainer textFieldItems={fields} />
+                <TextFieldContainer
+                    textFieldItems={fields}
+                    errors={errors}
+                    handleChange={handleChange}
+                />
                 <Button
                     type="submit"
                     fullWidth
