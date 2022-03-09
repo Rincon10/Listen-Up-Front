@@ -1,11 +1,31 @@
+import React, { useEffect, useReducer } from 'react';
 import AppRouter from 'components/routers/AppRouter';
+import { UserContext } from 'context/UserContext';
+import authReducer from 'components/auth/authReducer';
 import './css/index.css';
 
 function App() {
+    const init = () => {
+        return (
+            JSON.parse(localStorage.getItem('user')) || {
+                logged: false,
+            }
+        );
+    };
+
+    /* const [state, dispatch] = useReducer(reducer, initialState, init) */
+    const [user, dispatch] = useReducer(authReducer, {}, init);
+
+    useEffect(() => {
+        localStorage.setItem('user', JSON.stringify(user));
+    }, [user]);
+
     return (
-        <div className="App">
-            <AppRouter />
-        </div>
+        <main id="main-container">
+            <UserContext.Provider value={{ user, dispatch }}>
+                <AppRouter />
+            </UserContext.Provider>
+        </main>
     );
 }
 

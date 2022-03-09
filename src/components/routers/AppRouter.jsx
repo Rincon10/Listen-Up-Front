@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginScreen from 'components/login/LoginScreen';
+import SignUpScreen from 'components/signup/SignUpScreen';
 
 import {
     BrowserRouter as Router,
@@ -15,6 +16,7 @@ const AppRouter = () => {
             <div>
                 <Switch>
                     <Route exact path="/login" component={LoginScreen} />
+                    <Route exact path="/signup" component={SignUpScreen} />
                     <Redirect to="/login" />
                 </Switch>
             </div>
