@@ -2,8 +2,12 @@ const validateInfoLogin = values => {
     const errors = {};
     const { email, password } = values;
 
-    for (const property in values) {
-        if (!values[property]) errors[property] = `${property} is mandatory!!`;
+    if (!email) {
+        errors.email = `email is mandatory!!`;
+    }
+
+    if (!password) {
+        errors.password = `password is mandatory!!`;
     }
 
     const regularExp =

@@ -4,6 +4,7 @@ import useAuthScreen from 'components/hooks/useAuthScreen';
 import Form from 'components/ui/Form';
 import { Grid } from '@mui/material';
 import '../../css/signup.css';
+import validateInfoSignUp from 'components/helpers/validateInfoSignUp';
 
 const theme = createTheme();
 
@@ -28,6 +29,7 @@ const SignUpScreen = () => {
                     title={'Sign Up'}
                     aLink={'You already have an account? Log In'}
                     href={'login'}
+                    validateInfo={validateInfoSignUp}
                 />
             </Grid>
         </ThemeProvider>

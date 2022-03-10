@@ -26,6 +26,7 @@ export const userApiclient = (() => {
         },
 
         postUser: async userDTO => {
+            delete userDTO.password2;
             const response = await fetch(`${URL}`, {
                 method: 'POST',
                 headers: myHeader,

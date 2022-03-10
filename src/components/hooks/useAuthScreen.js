@@ -6,9 +6,8 @@ const useAuthScreen = inputs => {
 
     useEffect(() => {
         setFields(getTextFields(inputs));
-    }, [inputs]);
+    }, []);
 
-    console.log(fields);
     return { fields };
 };
 

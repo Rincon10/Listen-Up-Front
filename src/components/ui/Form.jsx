@@ -8,13 +8,22 @@ import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextFieldContainer from 'components/ui/TextFieldContainer';
-
-import '../../css/form.css';
 import useForm from 'components/hooks/useForm';
 import validateInfoLogin from 'components/helpers/validateInfoLogin';
 
-const Form = ({ title, fields, aLink, href }) => {
-    const { handleChange, handleSubmit, errors } = useForm(validateInfoLogin);
+import '../../css/form.css';
+
+const Form = ({
+    title,
+    fields,
+    aLink,
+    href,
+    validateInfo = validateInfoLogin,
+}) => {
+    const { handleChange, handleSubmit, errors } = useForm(
+        validateInfo,
+        href === 'singup',
+    );
 
     return (
         <Box
@@ -41,6 +50,7 @@ const Form = ({ title, fields, aLink, href }) => {
                     textFieldItems={fields}
                     errors={errors}
                     handleChange={handleChange}
+                    key={href}
                 />
                 <Button
                     type="submit"
@@ -67,6 +77,7 @@ Form.propTypes = {
     fields: PropTypes.array,
     href: PropTypes.string,
     title: PropTypes.string,
+    validateInfo: PropTypes.func,
 };
 
 export default Form;

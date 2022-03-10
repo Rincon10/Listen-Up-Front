@@ -7,8 +7,15 @@ import { useContext, useState } from 'react';
 import swal from 'sweetalert';
 
 //validateFunction must be a customHook
-const useForm = ({ validateFunction = validateInfoLogin }) => {
-    const [data, setData] = useState({ email: '', password: '' });
+const useForm = (validateFunction = validateInfoLogin, loginB = true) => {
+    const initData = {
+        email: '',
+        nickname: '',
+        password: '',
+        password2: '',
+    };
+
+    const [data, setData] = useState(initData);
     const [errors, setErrors] = useState({});
     const [token, setToken] = useState(null);
     const { dispatch } = useContext(UserContext);
@@ -32,9 +39,34 @@ const useForm = ({ validateFunction = validateInfoLogin }) => {
             });
     };
 
+    const signUp = () => {
+        userApiclient
+            .postUser({ ...data, bio: '' })
+            .then(() => {
+                swal({
+                    title: 'registered',
+                    icon: 'success',
+                    text: 'successfully registered',
+                    timer: '6000',
+                });
+                setData(initData);
+                setInterval(() => {
+                    window.location.href = '/login';
+                }, 6000);
+            })
+            .catch(() => {
+                swal({
+                    title: 'Login',
+                    icon: 'error',
+                    text: 'Oops we cant create the user. please try again',
+                    timer: '5000',
+                });
+            });
+    };
+
     const updateUser = () => {
-        const { email } = data;
-        userApiclient.getUserByEmail(email).then(user => {
+        const { nickname } = data;
+        userApiclient.getUserByNickName(nickname).then(user => {
             setData(user);
             user['token'] = token;
         });
@@ -52,10 +84,13 @@ const useForm = ({ validateFunction = validateInfoLogin }) => {
 
     const handleSubmit = async event => {
         event.preventDefault();
+
         const currentErrors = await validateFunction(data);
         setErrors(currentErrors);
         if (_.isEqual({}, currentErrors)) {
-            login();
+            console.log(loginB);
+            if (loginB) login();
+            else signUp();
         }
     };
 
