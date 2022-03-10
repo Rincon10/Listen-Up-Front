@@ -1,8 +1,7 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import useLoginScreen from 'components/hooks/useLoginScreen';
+import useAuthScreen from 'components/hooks/useAuthScreen';
 import Form from 'components/ui/Form';
 import { Grid } from '@mui/material';
 import Paper from '@mui/material/Paper';
@@ -10,10 +9,16 @@ import Paper from '@mui/material/Paper';
 const theme = createTheme();
 
 const LoginScreen = () => {
-    const { fields } = useLoginScreen();
+    const { fields } = useAuthScreen([
+        ['email', 'Email Address', 'email'],
+        ['password', 'Password', 'password'],
+    ]);
+
+    const URL =
+        'https://www.educaciontrespuntocero.com/wp-content/uploads/2019/03/cursos-musica.jpg';
+
     const backgroundProperties = {
-        backgroundImage:
-            'url(https://www.educaciontrespuntocero.com/wp-content/uploads/2019/03/cursos-musica.jpg)',
+        backgroundImage: `url(${URL})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -37,7 +42,7 @@ const LoginScreen = () => {
                         fields={fields}
                         title={'Log In'}
                         aLink={"Don't have an account? Sign Up"}
-                        href={'#'}
+                        href={'singup'}
                     />
                 </Grid>
             </Grid>

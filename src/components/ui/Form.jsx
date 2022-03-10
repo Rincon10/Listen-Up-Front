@@ -48,7 +48,7 @@ const Form = ({ title, fields, aLink, href }) => {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                 >
-                    Log In
+                    {title}
                 </Button>
                 <Grid container>
                     <Grid item>
