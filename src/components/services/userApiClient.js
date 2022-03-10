@@ -6,8 +6,8 @@ export const userApiclient = (() => {
     myHeader.set('Access-Control-Allow-Origin', '*');
 
     return {
-        getUserByEmail: async email => {
-            const response = await fetch(`${URL}/nickname/${email}`, {
+        getUserByNickName: async nickName => {
+            const response = await fetch(`${URL}/nickname/${nickName}`, {
                 method: 'GET',
                 headers: myHeader,
             });
