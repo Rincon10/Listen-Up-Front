@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LoginScreen from 'components/login/LoginScreen';
-import SignUpScreen from 'components/signup/SignUpScreen';
+import { UserContext } from 'context/UserContext';
 
 import {
     BrowserRouter as Router,
@@ -9,15 +9,26 @@ import {
     /* Link, */
     Redirect,
 } from 'react-router-dom';
+import Home from 'components/home/Home';
+import SignUpScreen from 'components/signup/SignUpScreen';
 
 const AppRouter = () => {
+    const { logged } = useContext(UserContext);
+
     return (
         <Router>
             <div>
                 <Switch>
-                    <Route exact path="/login" component={LoginScreen} />
-                    <Route exact path="/signup" component={SignUpScreen} />
-                    <Redirect to="/login" />
+                    {!logged && (
+                        <Route exact path="/login" component={LoginScreen} />
+                    )}
+                    {!logged && (
+                        <Route exact path="/singup" component={SignUpScreen} />
+                    )}
+                    {logged && <Route exact path="/home" component={Home} />}
+
+                    {!logged && <Redirect to="/login" />}
+                    {logged && <Redirect to="/home" />}
                 </Switch>
             </div>
         </Router>
