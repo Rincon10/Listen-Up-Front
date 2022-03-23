@@ -9,11 +9,13 @@ import {
     /* Link, */
     Redirect,
 } from 'react-router-dom';
-import Home from 'components/home/Home';
 import SignUpScreen from 'components/signup/SignUpScreen';
+import HomeScreen from 'components/home/HomeScreen';
 
 const AppRouter = () => {
-    const { logged } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+
+    const { logged } = user;
 
     return (
         <Router>
@@ -25,9 +27,12 @@ const AppRouter = () => {
                     {!logged && (
                         <Route exact path="/singup" component={SignUpScreen} />
                     )}
-                    {logged && <Route exact path="/home" component={Home} />}
+                    {logged && (
+                        <Route exact path="/home" component={HomeScreen} />
+                    )}
 
                     {!logged && <Redirect to="/login" />}
+
                     {logged && <Redirect to="/home" />}
                 </Switch>
             </div>

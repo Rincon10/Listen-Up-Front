@@ -5,7 +5,8 @@ const useAuthScreen = inputs => {
     const [fields, setFields] = useState([]);
 
     useEffect(() => {
-        setFields(getTextFields(inputs));
+        const realFields = getTextFields(inputs);
+        setFields(realFields);
     }, []);
 
     return { fields };

@@ -1,15 +1,23 @@
 export const userApiclient = (() => {
-    const URL = 'http://localhost:8080/user';
+    const URL = 'http://localhost:8080';
 
     const myHeader = new Headers();
+
     myHeader.set('Content-Type', 'application/json');
     myHeader.set('Access-Control-Allow-Origin', '*');
 
     return {
-        getUserByNickName: async nickName => {
-            const response = await fetch(`${URL}/nickname/${nickName}`, {
+        getUserByEmail: async (email, token) => {
+            const authHeader = new Headers({
+                Authorization: `Bearer ${token}`,
+                Accept: '*/*',
+            });
+
+            const response = await fetch(`${URL}/user/email/${email}`, {
                 method: 'GET',
-                headers: myHeader,
+                mode: 'cors',
+                headers: authHeader,
+                redirect: 'follow',
             });
             if (!response.ok) throw new Error('The response failed');
             return response.json();
@@ -27,7 +35,8 @@ export const userApiclient = (() => {
 
         postUser: async userDTO => {
             delete userDTO.password2;
-            const response = await fetch(`${URL}`, {
+
+            const response = await fetch(`${URL}/user`, {
                 method: 'POST',
                 headers: myHeader,
                 body: JSON.stringify(userDTO),

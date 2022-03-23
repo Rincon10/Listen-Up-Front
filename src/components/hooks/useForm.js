@@ -17,17 +17,13 @@ const useForm = (validateFunction = validateInfoLogin, loginB = true) => {
 
     const [data, setData] = useState(initData);
     const [errors, setErrors] = useState({});
-    const [token, setToken] = useState(null);
     const { dispatch } = useContext(UserContext);
 
     const login = () => {
         userApiclient
             .getToken(data)
-            .then(token => {
-                data.password = '';
-                setToken(token);
-                updateUser();
-                window.location.href = '/home';
+            .then(tokenResponse => {
+                updateUser(tokenResponse);
             })
             .catch(() => {
                 swal({
@@ -64,17 +60,29 @@ const useForm = (validateFunction = validateInfoLogin, loginB = true) => {
             });
     };
 
-    const updateUser = () => {
-        const { nickname } = data;
-        userApiclient.getUserByNickName(nickname).then(user => {
-            setData(user);
-            user['token'] = token;
-        });
-        const action = {
-            type: types.login,
-            payload: data,
-        };
-        dispatch(action);
+    const updateUser = async t => {
+        const { email } = data;
+
+        userApiclient
+            .getUserByEmail(email, t.token)
+            .then(user => {
+                user['token'] = t.token;
+                setData({});
+                const action = {
+                    type: types.login,
+                    payload: user,
+                };
+                dispatch(action);
+                window.location.href = '/home';
+            })
+            .catch(() => {
+                swal({
+                    title: 'Login',
+                    icon: 'error',
+                    text: 'error',
+                    timer: '5000',
+                });
+            });
     };
 
     const handleChange = event => {
@@ -88,7 +96,6 @@ const useForm = (validateFunction = validateInfoLogin, loginB = true) => {
         const currentErrors = await validateFunction(data);
         setErrors(currentErrors);
         if (_.isEqual({}, currentErrors)) {
-            console.log(loginB);
             if (loginB) login();
             else signUp();
         }
