@@ -5,10 +5,12 @@ import ProfileAvatar from 'components/commons/ProfileAvatar';
 import { profileBackground, profileIcon } from '../constants/Images';
 import BasicTabs from 'components/commons/BasicTabs';
 import { UserContext } from 'context/UserContext';
+import useProfile from 'components/hooks/useProfile';
 
 export default function ProfileScreen() {
 
-    const{user} = useContext (UserContext);
+    const{user} = useContext (UserContext); 
+    const{post} = useProfile();
 
     const {
         nickname = 'u/gabrielasasilva27',
@@ -60,6 +62,7 @@ export default function ProfileScreen() {
 
             <Grid style={{ marginTop: '20px' }} item xs={12} md={12} lg={12}>
                 <BasicTabs value={value} handleChange={handleChange} />
+                {value === 0 && <Posts posts={post}/> }
             </Grid>
             <hr />
         </Grid>
