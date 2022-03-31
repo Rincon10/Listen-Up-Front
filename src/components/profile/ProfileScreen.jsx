@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import OutlinedButton from 'components/commons/OutlinedButton';
 import ProfileAvatar from 'components/commons/ProfileAvatar';
 import { profileBackground, profileIcon } from '../constants/Images';
 import BasicTabs from 'components/commons/BasicTabs';
+import { UserContext } from 'context/UserContext';
 
-export default function ProfileScreen(props) {
+export default function ProfileScreen() {
+
+    const{user} = useContext (UserContext);
+
     const {
-        username = 'u/gabrielasasilva27',
+        nickname = 'u/gabrielasasilva27',
         followersCantity = '2',
-        description = 'u/gabrielaasilva26 - 1 karma - 15 d - Mar 15, 2022',
-    } = props;
+        bio = 'u/gabrielaasilva26 - 1 karma - 15 d - Mar 15, 2022',
+        createdAt
+    } = user;
 
     const [value, setValue] = useState(1);
 
