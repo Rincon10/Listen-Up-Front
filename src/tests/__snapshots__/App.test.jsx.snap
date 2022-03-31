@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test to the component <App /> The component <App /> should render propertly 1`] = `
+<main
+  id="main-container"
+>
+  <ContextProvider
+    value={
+      Object {
+        "dispatch": [Function],
+        "user": Object {
+          "logged": false,
+        },
+      }
+    }
+  >
+    <AppRouter />
+  </ContextProvider>
+</main>
+`;
