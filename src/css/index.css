@@ -1,6 +1,7 @@
 :root {
     --primary-color: #a1313d;
     --secundary-color: #4a88aa;
+    --inherit-color:white;
     --error: #f00;
     --black: #000;
 }
