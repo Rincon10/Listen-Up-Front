@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import LoginScreen from 'components/login/LoginScreen';
+import ProfileComponent from 'components/profile/ProfileScreen';
 import { UserContext } from 'context/UserContext';
 
 import {
@@ -30,7 +31,13 @@ const AppRouter = () => {
                     {logged && (
                         <Route exact path="/home" component={HomeScreen} />
                     )}
-
+                    {logged && (
+                        <Route
+                            exact
+                            path="/Profile"
+                            component={ProfileComponent}
+                        />
+                    )}
                     {!logged && <Redirect to="/login" />}
 
                     {logged && <Redirect to="/home" />}
