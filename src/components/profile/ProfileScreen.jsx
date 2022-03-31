@@ -6,25 +6,20 @@ import { profileBackground, profileIcon } from '../constants/Images';
 import BasicTabs from 'components/commons/BasicTabs';
 import { UserContext } from 'context/UserContext';
 import useProfile from 'components/hooks/useProfile';
-
-export default function ProfileScreen() {
-
-    const{user} = useContext (UserContext); 
-    const{post} = useProfile();
-
+import Posts from './commons/Posts';
+const ProfileScreen = () => {
+    const { user } = useContext(UserContext);
+    const { posts } = useProfile();
     const {
         nickname = 'u/gabrielasasilva27',
         followersCantity = '2',
         bio = 'u/gabrielaasilva26 - 1 karma - 15 d - Mar 15, 2022',
-        createdAt
+        createdAt,
     } = user;
-
     const [value, setValue] = useState(1);
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     return (
         <Grid container>
             <Grid
@@ -52,19 +47,19 @@ export default function ProfileScreen() {
                         <ProfileAvatar src={profileIcon} />
                     </Grid>
                 </div>
-                <h2 style={{ color: 'white' }}>{username}</h2>
+                <h2 style={{ color: 'white' }}>{nickname}</h2>
                 <p style={{ color: 'white' }}>
                     {followersCantity + ' followers'}
                 </p>
-                <p style={{ color: 'white' }}>{description}</p>
+                <p style={{ color: 'white' }}>{bio}</p>
                 <OutlinedButton label="Edit Profile" />
             </Grid>
-
             <Grid style={{ marginTop: '20px' }} item xs={12} md={12} lg={12}>
                 <BasicTabs value={value} handleChange={handleChange} />
-                {value === 0 && <Posts posts={post}/> }
+                {value === 0 && <Posts posts={posts} />}
             </Grid>
             <hr />
         </Grid>
     );
-}
+};
+export default ProfileScreen;

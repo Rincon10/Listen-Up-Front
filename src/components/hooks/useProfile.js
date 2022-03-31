@@ -1,14 +1,20 @@
 import { postApiclient } from 'components/services/postApiClient';
-import React, { useState } from 'react'
 
-const useProfile = () => { 
-    const[post, setPost] = useState([]);
+import { useEffect, useState } from 'react';
 
-    const getPost = () =>{
-        postApiclient.getAllPost().then((response) => {setPost(response)}).catch()}
-    return {post}; 
-}
+const useProfile = () => {
+    const [posts, setPosts] = useState([]);
 
+    useEffect(() => {
+        postApiclient
+            .getAllPost()
+            .then(response => {
+                setPosts(response);
+            })
+            .catch(error => console.log(error));
+    }, []);
 
+    return { posts };
+};
 
-export default useProfile
+export default useProfile;
