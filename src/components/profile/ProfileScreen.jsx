@@ -14,7 +14,6 @@ const ProfileScreen = () => {
         nickname = 'u/gabrielasasilva27',
         followersCantity = '2',
         bio = 'u/gabrielaasilva26 - 1 karma - 15 d - Mar 15, 2022',
-        createdAt,
     } = user;
     const [value, setValue] = useState(1);
     const handleChange = (event, newValue) => {
