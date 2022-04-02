@@ -15,6 +15,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { types } from 'components/types/types';
+import { useContext } from 'react';
+import { UserContext } from 'context/UserContext';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -80,6 +83,15 @@ export default function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const { dispatch } = useContext(UserContext);
+
+  const handleClick = () => {
+    const action = {
+      type: types.logout,
+    };
+    dispatch(action)
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -121,11 +133,9 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <LogoutIcon />
-          </Badge>
+        <LogoutIcon />
         </IconButton>
-        <p>Messages</p>
+        <p>Logout</p>
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -186,7 +196,11 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" color="inherit">
+            <IconButton 
+              size="large"
+              color="inherit"
+              onClick={handleClick}
+            >
             <LogoutIcon />
             </IconButton>
             <IconButton
