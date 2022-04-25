@@ -1,4 +1,4 @@
-import { postApiclient } from 'components/services/postApiClient';
+import { postApiclient } from '../../services/postApiClient';
 
 import { useEffect, useState } from 'react';
 

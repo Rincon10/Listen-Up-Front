@@ -1,5 +1,5 @@
 import validateInfoLogin from 'components/helpers/validateInfoLogin';
-import { userApiclient } from 'components/services/userApiClient';
+import { userApiclient } from '../../services/userApiClient';
 import { types } from 'components/types/types';
 import { UserContext } from 'context/UserContext';
 import _ from 'lodash';
