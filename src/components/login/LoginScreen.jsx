@@ -15,7 +15,7 @@ const LoginScreen = () => {
     ]);
 
     const URL =
-        'https://www.educaciontrespuntocero.com/wp-content/uploads/2019/03/cursos-musica.jpg';
+        'https://github.com/Rincon10/AREP-LAB04/blob/master/Twiter-Front-End/public/ImgLogin.png?raw=true';
 
     const backgroundProperties = {
         backgroundImage: `url(${URL})`,

@@ -1,7 +1,8 @@
 :root {
-    --primary-color: #a1313d;
-    --secundary-color: #4a88aa;
-    --inherit-color:white;
+    --primary-color: #623a6c;
+    --secundary-color: #e7d4ec;
+    --background: #e6ecf0;
+    --inherit-color: white;
     --error: #f00;
     --black: #000;
 }
