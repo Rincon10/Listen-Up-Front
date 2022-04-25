@@ -1,5 +1,3 @@
-import BackgroundProfile from "./backgroundProfile.png";
+import BackgroundProfile from './backgroundProfile.png';
 
-export {
-    BackgroundProfile
-}
+export { BackgroundProfile };

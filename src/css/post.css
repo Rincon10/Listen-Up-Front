@@ -1,7 +1,15 @@
+:root {
+    --primary-color: #623a6c;
+    --secundary-color: #e7d4ec;
+    --background: #e6ecf0;
+    --blue: #a763b8;
+    --inherit-color: white;
+}
+
 .post {
     display: flex;
     align-items: flex-start;
-    border-bottom: 1px solid var(--twitter-background);
+    border-bottom: 1px solid var(--secundary-color);
     padding-bottom: 10px;
 }
 
@@ -32,13 +40,13 @@
 
 .post__badge {
     font-size: 14px !important;
-    color: var(--twitter-color);
+    color: var(--primary-color);
 }
 
 .post__headerSpecial {
     font-weight: 600;
     font-size: 12px;
-    color: gray;
+    color: var(--blue);
 }
 
 .post__avatar {

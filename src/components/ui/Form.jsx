@@ -41,6 +41,7 @@ const Form = ({
                 {title}
             </Typography>
             <Box
+                id="signup-form"
                 component="form"
                 onSubmit={handleSubmit}
                 noValidate

@@ -24,7 +24,7 @@ const Post = forwardRef(
                                     {verified && (
                                         <VerifiedUserIcon className="post__badge" />
                                     )}
-                                    @{username}
+                                    u/{username}
                                 </span>
                             </h3>
                         </div>

@@ -1,10 +1,13 @@
 const validateInfoSignUp = values => {
     const errors = {};
-    const { email, password, password2 } = values;
+    const { email, password, password2, nickname } = values;
 
     for (const property in values) {
         if (!values[property]) errors[property] = `${property} is mandatory!!`;
     }
+
+    if (nickname.trim() !== '' && nickname.trim().split(' ').length > 1)
+        errors['nickname'] = 'Spaces are not accepted';
 
     const regularExp =
         /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}/;

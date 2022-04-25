@@ -5,12 +5,13 @@ import Box from '@mui/material/Box';
 
 export default function BasicTabs(props) {
     const { handleChange = () => {}, value = 0 } = props;
+    const color = '#e7d4ec';
     return (
         <Box>
             <Tabs value={value} onChange={handleChange}>
-                <Tab label="Posts" />
-                <Tab label="Comments" />
-                <Tab label="About" />
+                <Tab sx={{ color: { color } }} label="Posts" />
+                <Tab sx={{ color: { color } }} label="Comments" />
+                <Tab sx={{ color: { color } }} label="About" />
             </Tabs>
         </Box>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Avatar, Button } from '@material-ui/core';
 
 import Post from 'components/post/Post';
@@ -6,6 +6,8 @@ import FlipMove from 'react-flip-move';
 import usePost from 'components/hooks/usePost';
 
 import '../../css/postBox.css';
+import swal from 'sweetalert';
+import { UserContext } from 'context/UserContext';
 
 const PostBox = (
     initState = {
@@ -16,25 +18,40 @@ const PostBox = (
     const [newPost, setNewPost] = useState(initState);
 
     const { posts, setPosts } = usePost();
+    const { user } = useContext(UserContext);
+    const { nickname, name, avatar } = user;
 
     const onSubmit = event => {
         event.preventDefault();
 
         const { message, image } = newPost;
 
+        if (!message) {
+            swal({
+                title: 'Invalid Input',
+                icon: 'warning',
+                text: 'You must enter a message',
+                timer: '5000',
+            });
+            return;
+        }
+        const verified = true;
+
         const post = {
-            displayName: 'Camilo Rincon',
-            username: 'Rincon10',
-            verified: true,
+            displayName: name,
+            username: nickname,
+            verified: verified,
             text: message,
             image: image,
-            avatar: 'https://avatars.githubusercontent.com/u/53798019?v=4',
+            avatar: avatar,
         };
-        alert(JSON.stringify(post));
-        alert(JSON.stringify(posts));
         setPosts([post, ...posts]);
 
-        setNewPost(initState);
+        setNewPost({
+            message: '',
+            image: '',
+        });
+        document.getElementById('form')?.reset();
     };
 
     const onInputChange = event => {
@@ -45,9 +62,9 @@ const PostBox = (
     return (
         <>
             <div className="postBox">
-                <form>
+                <form id="form">
                     <div className="postBox__input">
-                        <Avatar src="https://avatars.githubusercontent.com/u/53798019?v=4" />
+                        <Avatar src={avatar} />
                         <input
                             id="message"
                             onChange={onInputChange}

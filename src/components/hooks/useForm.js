@@ -46,6 +46,7 @@ const useForm = (validateFunction = validateInfoLogin, loginB = true) => {
                     timer: '6000',
                 });
                 setData(initData);
+                document.getElementById('signup-form')?.reset();
                 setInterval(() => {
                     window.location.href = '/login';
                 }, 6000);
@@ -67,6 +68,8 @@ const useForm = (validateFunction = validateInfoLogin, loginB = true) => {
             .getUserByEmail(email, t.token)
             .then(user => {
                 user['token'] = t.token;
+                const name = email.split('@');
+                user['name'] = name[0];
                 setData({});
                 const action = {
                     type: types.login,
