@@ -1,4 +1,4 @@
-import PostBox from 'components/postBox/PostBox';
+import Forums from 'components/Forum/Forums';
 import React from 'react';
 
 import '../../css/feed.css';
@@ -9,8 +9,7 @@ const Feed = () => {
             <div className="feed__header">
                 <h2>Home</h2>
             </div>
-
-            <PostBox />
+            <Forums />
         </div>
     );
 };
