@@ -12,6 +12,7 @@ import { Button } from '@material-ui/core';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import handleNavigate from 'components/helpers/navigate';
+import '../../css/postBox.css';
 
 const ProfileScreen = () => {
     const { posts } = useProfile();
@@ -33,7 +34,6 @@ const ProfileScreen = () => {
     return (
         <Grid container>
             <Grid
-                item
                 xs={12}
                 md={12}
                 lg={12}
@@ -43,7 +43,6 @@ const ProfileScreen = () => {
                 style={{ padding: '5%' }}
             >
                 <Grid
-                    width={'100%'}
                     textAlign={'end'}
                     sx={{
                         backgroundColor: `${color}`,
@@ -76,11 +75,10 @@ const ProfileScreen = () => {
                 <p style={{ color: 'white' }}>{`Joined: ${createdAt}`}</p>
                 <OutlinedButton label="Edit Profile" />
             </Grid>
-            <Grid style={{ marginTop: '20px' }} item xs={12} md={12} lg={12}>
+            <Grid style={{ marginTop: '20px' }} xs={12} md={12} lg={12}>
                 <BasicTabs value={value} handleChange={handleChange} />
                 {value === 0 && <Posts posts={posts} />}
             </Grid>
-            <hr />
         </Grid>
     );
 };

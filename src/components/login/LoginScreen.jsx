@@ -14,8 +14,7 @@ const LoginScreen = () => {
         ['password', 'Password', 'password'],
     ]);
 
-    const URL =
-        'https://github.com/Rincon10/AREP-LAB04/blob/master/Twiter-Front-End/public/ImgLogin.png?raw=true';
+    const URL = './img/ImgLogin.png';
 
     const backgroundProperties = {
         backgroundImage: `url(${URL})`,

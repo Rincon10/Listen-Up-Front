@@ -34,7 +34,7 @@ const Forum = ({
                     <CardMedia
                         component="img"
                         height="250"
-                        image="https://play-lh.googleusercontent.com/mOkjjo5Rzcpk7BsHrsLWnqVadUK1FlLd2-UlQvYkLL4E9A0LpyODNIQinXPfUMjUrbE"
+                        image="./img/songIcon.png"
                         alt="Paella dish"
                     />
                     <CardContent>

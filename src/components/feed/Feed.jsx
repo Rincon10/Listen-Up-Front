@@ -2,7 +2,6 @@ import Forums from 'components/Forum/Forums';
 import React from 'react';
 
 import '../../css/feed.css';
-
 const Feed = () => {
     return (
         <div className="feed">

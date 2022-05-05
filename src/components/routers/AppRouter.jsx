@@ -31,8 +31,8 @@ const AppRouter = () => {
                     {logged && (
                         <Route exact path="/home" component={HomeScreen} />
                     )}
-                    {/* <Route exact path="/home" component={HomeScreen} />
-                    <Route exact path="/profile" component={ProfileComponent} /> */}
+                    <Route exact path="/home" component={HomeScreen} />
+                    <Route exact path="/profile" component={ProfileComponent} />
                     {logged && (
                         <Route
                             exact
