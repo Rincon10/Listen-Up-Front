@@ -71,13 +71,13 @@ const ProfileScreen = () => {
                 <p style={{ color: 'white' }}>
                     {followersCantity + ' followers'}
                 </p>
-                <p style={{ color: 'white' }}>{bio}</p>
                 <p style={{ color: 'white' }}>{`Joined: ${createdAt}`}</p>
                 <OutlinedButton label="Edit Profile" />
             </Grid>
             <Grid style={{ marginTop: '20px' }} xs={12} md={12} lg={12}>
                 <BasicTabs value={value} handleChange={handleChange} />
                 {value === 0 && <Posts posts={posts} />}
+                {value === 2 && <div>{bio}</div>}
             </Grid>
         </Grid>
     );

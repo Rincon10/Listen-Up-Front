@@ -8,13 +8,20 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
+
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import CommentIcon from '@mui/icons-material/Comment';
 
 const Forum = ({
-    forum = { topic: 'topic', description: 'description', createdAt: 'today' },
+    forum = {
+        id: '1',
+        topic: 'topic',
+        description: 'description',
+        createdAt: 'today',
+    },
 }) => {
-    const { topic, description, createdAt } = forum;
+    const { id, topic, description, createdAt } = forum;
     return (
         <div style={{ border: '1px solid #e7d4ec' }}>
             <center>
@@ -43,11 +50,14 @@ const Forum = ({
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <IconButton aria-label="add to favorites">
-                            <FavoriteIcon />
+                        <IconButton aria-label="like">
+                            <ArrowUpwardIcon style={{ color: '#FFF' }} />
                         </IconButton>
-                        <IconButton aria-label="share">
-                            <ShareIcon />
+                        <IconButton aria-label="dislike">
+                            <ArrowDownwardIcon style={{ color: '#FFF' }} />
+                        </IconButton>
+                        <IconButton aria-label="comments">
+                            <CommentIcon style={{ color: '#FFF' }} />
                         </IconButton>
                     </CardActions>
                 </Card>

@@ -1,4 +1,4 @@
-import Forums from 'components/Forum/Forums';
+import Forums from 'components/forum/Forums';
 import React from 'react';
 
 import '../../css/feed.css';

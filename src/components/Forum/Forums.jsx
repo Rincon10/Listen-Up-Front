@@ -20,7 +20,8 @@ const Forums = () => {
             )}
             {forums.length >= 1 &&
                 forums.map(forum => {
-                    return <Forum key={forum.id} forum={forum} />;
+                    const { id } = forum;
+                    return <Forum id={id} key={id} forum={forum} />;
                 })}
         </>
     );
