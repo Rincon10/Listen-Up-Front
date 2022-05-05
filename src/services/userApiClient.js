@@ -1,5 +1,5 @@
 export const userApiclient = (() => {
-    const URL = 'https://listenup-userapi.herokuapp.com/';
+    const URL = 'https://listenup-userapi.herokuapp.com';
     /* cosnt URL = heroku*/
 
     const myHeader = new Headers();
