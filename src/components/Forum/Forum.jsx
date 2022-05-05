@@ -21,7 +21,7 @@ const Forum = ({
         createdAt: 'today',
     },
 }) => {
-    const { id, topic, description, createdAt } = forum;
+    const { topic, description, createdAt } = forum;
     return (
         <div style={{ border: '1px solid #e7d4ec' }}>
             <center>

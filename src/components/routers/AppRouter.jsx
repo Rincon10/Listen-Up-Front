@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom';
 import SignUpScreen from 'components/signup/SignUpScreen';
 import HomeScreen from 'components/home/HomeScreen';
+import ForumScreen from 'components/forum/ForumScreen';
 
 const AppRouter = () => {
     const { user } = useContext(UserContext);
@@ -22,27 +23,34 @@ const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    {!logged && (
+                    {true && (
                         <Route exact path="/login" component={LoginScreen} />
                     )}
-                    {!logged && (
+                    {true && (
                         <Route exact path="/singup" component={SignUpScreen} />
                     )}
-                    {logged && (
+                    {true && (
                         <Route exact path="/home" component={HomeScreen} />
                     )}
-                    {/*                     <Route exact path="/home" component={HomeScreen} />
-                    <Route exact path="/profile" component={ProfileComponent} /> */}
-                    {logged && (
+
+                    {true && (
                         <Route
                             exact
                             path="/profile"
                             component={ProfileComponent}
                         />
                     )}
-                    {!logged && <Redirect to="/login" />}
+                    <Route
+                        path="/forum/:idForum"
+                        render={({ match }) => {
+                            const { idForum } = match.params;
+                            return <ForumScreen idForum={idForum} />;
+                        }}
+                    />
 
-                    {logged && <Redirect to="/home" />}
+                    {true && <Redirect to="/login" />}
+
+                    {true && <Redirect to="/home" />}
                 </Switch>
             </div>
         </Router>

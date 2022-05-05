@@ -1,5 +1,5 @@
 export const postApiclient = (() => {
-    const URL = 'http://localhost:8080';
+    const URL = 'https://listenup-postapi.herokuapp.com';
 
     const myHeader = new Headers();
 
