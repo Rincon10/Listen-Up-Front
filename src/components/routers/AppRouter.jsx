@@ -23,34 +23,35 @@ const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    {true && (
+                    {!logged && (
                         <Route exact path="/login" component={LoginScreen} />
                     )}
-                    {true && (
+                    {!logged && (
                         <Route exact path="/singup" component={SignUpScreen} />
                     )}
-                    {true && (
+                    {logged && (
                         <Route exact path="/home" component={HomeScreen} />
                     )}
 
-                    {true && (
+                    {logged && (
                         <Route
                             exact
                             path="/profile"
                             component={ProfileComponent}
                         />
                     )}
-                    <Route
-                        path="/forum/:idForum"
-                        render={({ match }) => {
-                            const { idForum } = match.params;
-                            return <ForumScreen idForum={idForum} />;
-                        }}
-                    />
+                    {logged && (
+                        <Route
+                            path="/forum/:idForum"
+                            render={({ match }) => {
+                                const { idForum } = match.params;
+                                return <ForumScreen idForum={idForum} />;
+                            }}
+                        />
+                    )}
+                    {!logged && <Redirect to="/login" />}
 
-                    {true && <Redirect to="/login" />}
-
-                    {true && <Redirect to="/home" />}
+                    {logged && <Redirect to="/home" />}
                 </Switch>
             </div>
         </Router>
