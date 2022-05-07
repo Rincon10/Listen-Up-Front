@@ -17,7 +17,7 @@ import '../../css/postBox.css';
 const ProfileScreen = () => {
     const { posts } = useProfile();
     const { user } = useContext(UserContext);
-    const { avatar } = user;
+    const { avatar = './img/avatar.png' } = user;
     const color = '#623a6c';
 
     const {
