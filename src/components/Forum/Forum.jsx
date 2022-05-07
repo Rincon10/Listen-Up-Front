@@ -9,9 +9,12 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 
+import handleNavigate from 'components/helpers/navigate';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CommentIcon from '@mui/icons-material/Comment';
+
+import '../../css/forum.css';
 
 const Forum = ({
     forum = {
@@ -21,7 +24,8 @@ const Forum = ({
         createdAt: 'today',
     },
 }) => {
-    const { topic, description, createdAt } = forum;
+    const { id, topic, description, createdAt } = forum;
+
     return (
         <div style={{ border: '1px solid #e7d4ec' }}>
             <center>
@@ -39,10 +43,14 @@ const Forum = ({
                         subheader={createdAt}
                     />
                     <CardMedia
+                        className="forum-img"
                         component="img"
                         height="250"
                         image="./img/songIcon.png"
                         alt="Paella dish"
+                        onClick={() => {
+                            handleNavigate(`forum/${id}`);
+                        }}
                     />
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">

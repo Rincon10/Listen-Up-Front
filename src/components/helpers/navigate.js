@@ -1,5 +1,5 @@
 const handleNavigate = name => {
-    window.location.href = `${name}`;
+    window.location.pathname = `${name}`;
 };
 
 export default handleNavigate;
