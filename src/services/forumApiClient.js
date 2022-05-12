@@ -30,5 +30,15 @@ export const forumApiClient = (() => {
 
             return response.json();
         },
+
+        getForumById: async idForum => {
+            const response = await fetch(`${URL}/forum/${idForum}`, {
+                method: 'GET',
+                headers: myHeader,
+            });
+            if (!response.ok) throw new Error('The response failed');
+
+            return response.json();
+        },
     };
 })();

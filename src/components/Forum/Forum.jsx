@@ -18,11 +18,12 @@ import '../../css/forum.css';
 
 const Forum = ({
     forum = {
-        id: '1',
+        id: '8b862bb4-46b2-41a0-90b5-5a4a16ffb7b5',
         topic: 'topic',
         description: 'description',
         createdAt: 'today',
     },
+    show = true,
 }) => {
     const { id, topic, description, createdAt } = forum;
 
@@ -57,17 +58,24 @@ const Forum = ({
                             {description}
                         </Typography>
                     </CardContent>
-                    <CardActions>
-                        <IconButton aria-label="like">
-                            <ArrowUpwardIcon style={{ color: '#FFF' }} />
-                        </IconButton>
-                        <IconButton aria-label="dislike">
-                            <ArrowDownwardIcon style={{ color: '#FFF' }} />
-                        </IconButton>
-                        <IconButton aria-label="comments">
-                            <CommentIcon style={{ color: '#FFF' }} />
-                        </IconButton>
-                    </CardActions>
+                    {show && (
+                        <CardActions>
+                            <IconButton aria-label="like">
+                                <ArrowUpwardIcon style={{ color: '#FFF' }} />
+                            </IconButton>
+                            <IconButton aria-label="dislike">
+                                <ArrowDownwardIcon style={{ color: '#FFF' }} />
+                            </IconButton>
+                            <IconButton aria-label="comments">
+                                <CommentIcon
+                                    style={{ color: '#FFF' }}
+                                    onClick={() => {
+                                        handleNavigate(`forum/${id}`);
+                                    }}
+                                />
+                            </IconButton>
+                        </CardActions>
+                    )}
                 </Card>
             </center>
         </div>

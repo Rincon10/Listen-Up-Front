@@ -19,7 +19,11 @@ const PostBox = (
 
     const { posts, setPosts } = usePost();
     const { user } = useContext(UserContext);
-    const { nickname, name, avatar } = user;
+    const {
+        nickname,
+        name,
+        avatar = 'https://cdn2.iconfinder.com/data/icons/avatars-99/62/avatar-370-456322-512.png',
+    } = user;
 
     const onSubmit = event => {
         event.preventDefault();
@@ -69,7 +73,7 @@ const PostBox = (
                             id="message"
                             onChange={onInputChange}
                             name="message"
-                            placeholder="What's happening?"
+                            placeholder="Add a post"
                             type="text"
                         />
                     </div>

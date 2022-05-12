@@ -17,7 +17,6 @@ import '../../css/postBox.css';
 const ProfileScreen = () => {
     const { posts } = useProfile();
     const { user } = useContext(UserContext);
-    const { avatar = './img/avatar.png' } = user;
     const color = '#623a6c';
 
     const {
@@ -25,6 +24,7 @@ const ProfileScreen = () => {
         followersCantity = '2',
         createdAt,
         bio = 'u/gabrielaasilva26 - 1 karma - 15 d - Mar 15, 2022',
+        avatar = './img/avatar.png',
     } = user;
 
     const [value, setValue] = useState(1);

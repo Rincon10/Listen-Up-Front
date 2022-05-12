@@ -1,4 +1,5 @@
 import Feed from 'components/feed/Feed';
+import Forums from 'components/forum/Forums';
 import Sidebar from 'components/ui/Sidebar';
 import React from 'react';
 import '../../css/home.css';
@@ -7,7 +8,7 @@ const HomeScreen = () => {
     return (
         <div className="app">
             <Sidebar />
-            <Feed />
+            <Feed component={<Forums />} />
         </div>
     );
 };
