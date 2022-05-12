@@ -1,7 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
-import AppRouter from 'components/routers/AppRouter';
-import { UserContext } from 'context/UserContext';
-import authReducer from 'components/auth/authReducer';
+import AppRouter from './components/routers/AppRouter';
+import { UserContext } from './context/UserContext';
+import authReducer from './components/auth/authReducer';
+
 import './css/index.css';
 
 function App() {
