@@ -1,15 +1,10 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { forumApiClient } from 'services/forumApiClient';
+import React from 'react';
+import useForums from 'components/hooks/useForums';
+
 import Forum from './Forum';
 
-const Forums = () => {
-    const [forums, setForums] = useState([]);
-    useEffect(() => {
-        forumApiClient.getAllForums().then(data => {
-            setForums(data);
-        });
-    }, []);
+const Forums = ({ allForums }) => {
+    const { forums } = useForums(allForums);
 
     return (
         <>

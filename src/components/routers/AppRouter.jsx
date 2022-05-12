@@ -13,6 +13,7 @@ import {
 import SignUpScreen from 'components/signup/SignUpScreen';
 import HomeScreen from 'components/home/HomeScreen';
 import ForumScreen from 'components/forum/ForumScreen';
+import PopularScreen from 'components/popular/PopularScreen';
 
 const AppRouter = () => {
     const { user } = useContext(UserContext);
@@ -31,6 +32,14 @@ const AppRouter = () => {
                     )}
                     {logged && (
                         <Route exact path="/home" component={HomeScreen} />
+                    )}
+
+                    {logged && (
+                        <Route
+                            exact
+                            path="/popular"
+                            component={PopularScreen}
+                        />
                     )}
 
                     {logged && (

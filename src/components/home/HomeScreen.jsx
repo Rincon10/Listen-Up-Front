@@ -10,7 +10,7 @@ const HomeScreen = () => {
     return (
         <div className="app">
             <Sidebar />
-            <Feed component={<Forums />} />
+            <Feed component={<Forums all={false} />} />
         </div>
     );
 };

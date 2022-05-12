@@ -24,7 +24,7 @@ const Sidebar = () => {
             <LibraryMusicIcon className="sidebar__twitterIcon" />
 
             <SidebarOption name="home" active Icon={HomeIcon} text="Home" />
-            <SidebarOption name="home" Icon={SearchIcon} text="Popular" />
+            <SidebarOption name="popular" Icon={SearchIcon} text="Popular" />
             <SidebarOption name="profile" Icon={PersonIcon} text="My Profile" />
 
             <Button

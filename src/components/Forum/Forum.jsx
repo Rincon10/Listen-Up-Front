@@ -25,7 +25,13 @@ const Forum = ({
     },
     show = true,
 }) => {
-    const { id, topic, description, createdAt } = forum;
+    const {
+        id,
+        topic,
+        description,
+        createdAt,
+        image = 'https://pbs.twimg.com/profile_images/1305995705631285248/jJivnXkR_400x400.jpg',
+    } = forum;
 
     return (
         <div style={{ border: '1px solid #e7d4ec' }}>
@@ -47,7 +53,7 @@ const Forum = ({
                         className="forum-img"
                         component="img"
                         height="250"
-                        image="./img/songIcon.png"
+                        image={image}
                         alt="Paella dish"
                         onClick={() => {
                             handleNavigate(`forum/${id}`);
