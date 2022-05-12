@@ -1,6 +1,6 @@
-import Feed from 'components/feed/Feed';
-import Sidebar from 'components/ui/Sidebar';
 import React from 'react';
+import Feed from '../../components/feed/Feed';
+import Sidebar from '../../components/ui/Sidebar';
 import PostBox from '../postBox/PostBox';
 import Forum from './Forum';
 

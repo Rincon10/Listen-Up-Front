@@ -1,10 +1,11 @@
+import { Grid } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import useAuthScreen from 'components/hooks/useAuthScreen';
-import Form from 'components/ui/Form';
-import { Grid } from '@mui/material';
+import Form from '../../components/ui/Form';
+import useAuthScreen from '../../components/hooks/useAuthScreen';
+import validateInfoSignUp from '../../components/helpers/validateInfoSignUp';
+
 import '../../css/signup.css';
-import validateInfoSignUp from 'components/helpers/validateInfoSignUp';
 
 const theme = createTheme();
 
