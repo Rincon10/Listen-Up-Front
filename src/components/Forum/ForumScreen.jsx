@@ -2,6 +2,9 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { forumApiClient } from 'services/forumApiClient';
+
+import SidebarOption from '../ui/SidebarOption';
+import HomeIcon from '@material-ui/icons/Home';
 import Feed from '../../components/feed/Feed';
 import Sidebar from '../../components/ui/Sidebar';
 import PostBox from '../postBox/PostBox';
@@ -24,18 +27,34 @@ const ForumScreen = ({
                 setForum(data);
             })
             .catch(e => {
-                setForum({});
+                setForum('');
             });
     }, [idForum]);
 
-    const { topic } = forum;
+    const { topic = `Not Found forum with id: ${idForum}` } = forum;
 
-    const component = (
-        <div>
-            <Forum show={false} forum={forum} />
-            <PostBox />
-        </div>
-    );
+    let component;
+    if (forum === '') {
+        component = (
+            <div
+                style={{
+                    marginTop: '10%',
+                    display: 'grid',
+                    justifyItems: 'center',
+                }}
+            >
+                <h2>Please go back...</h2>
+                <SidebarOption name="home" active Icon={HomeIcon} text="Home" />
+            </div>
+        );
+    } else {
+        component = (
+            <div>
+                <Forum show={false} forum={forum} />
+                <PostBox />
+            </div>
+        );
+    }
 
     return (
         <div className="app">

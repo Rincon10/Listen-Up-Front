@@ -10,7 +10,6 @@ export default function BasicTabs(props) {
         <Box>
             <Tabs value={value} onChange={handleChange}>
                 <Tab sx={{ color: { color } }} label="Posts" />
-                <Tab sx={{ color: { color } }} label="Comments" />
                 <Tab sx={{ color: { color } }} label="About" />
             </Tabs>
         </Box>

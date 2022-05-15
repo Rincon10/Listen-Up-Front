@@ -3,9 +3,21 @@ import { Avatar } from '@material-ui/core';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 import '../../css/post.css';
+import handleNavigate from 'components/helpers/navigate';
 
 const Post = forwardRef(
-    ({ displayName, username, verified, text, image, avatar }, ref) => {
+    (
+        {
+            displayName,
+            username,
+            verified,
+            text,
+            image,
+            avatar,
+            idForum = '8b862bb4-1-41a0-90b5-5a4a16ffb7b5',
+        },
+        ref,
+    ) => {
         return (
             <div className="post" ref={ref}>
                 <div className="post__avatar">
@@ -24,7 +36,12 @@ const Post = forwardRef(
                                 </span>
                             </h3>
                         </div>
-                        <div className="post__headerDescription">
+                        <div
+                            className="post__headerDescription"
+                            onClick={event => {
+                                handleNavigate(`forum/${idForum}`);
+                            }}
+                        >
                             <p>{text}</p>
                         </div>
                     </div>

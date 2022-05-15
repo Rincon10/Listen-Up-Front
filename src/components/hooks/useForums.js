@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { useEffect, useState } from 'react';
 import { forumApiClient } from 'services/forumApiClient';
 

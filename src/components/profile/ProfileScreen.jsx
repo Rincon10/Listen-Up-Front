@@ -13,6 +13,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import handleNavigate from 'components/helpers/navigate';
 import '../../css/postBox.css';
+import Feed from 'components/feed/Feed';
 
 const ProfileScreen = () => {
     const { posts } = useProfile();
@@ -31,6 +32,8 @@ const ProfileScreen = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    const component = <h1 style={{ textAlign: 'justify' }}>{bio}</h1>;
     return (
         <Grid container>
             <Grid
@@ -77,7 +80,14 @@ const ProfileScreen = () => {
             <Grid style={{ marginTop: '20px' }} xs={12} md={12} lg={12}>
                 <BasicTabs value={value} handleChange={handleChange} />
                 {value === 0 && <Posts posts={posts} />}
-                {value === 2 && <div>{bio}</div>}
+                {value === 1 && (
+                    <center>
+                        <div style={{ width: '700px' }}>
+                            <br />
+                            <Feed name="Bio" component={component} />
+                        </div>
+                    </center>
+                )}
             </Grid>
         </Grid>
     );
