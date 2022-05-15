@@ -12,8 +12,9 @@ import { Button } from '@material-ui/core';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import handleNavigate from 'components/helpers/navigate';
+import BasicContainer from 'components/ui/BasicContainer';
+
 import '../../css/postBox.css';
-import Feed from 'components/feed/Feed';
 
 const ProfileScreen = () => {
     const { posts } = useProfile();
@@ -34,7 +35,15 @@ const ProfileScreen = () => {
     };
 
     const component = (
-        <h1 style={{ textAlign: 'justify', padding: '20px' }}>{bio}</h1>
+        <div>
+            <div>
+                <h1>Bio</h1>
+                <Grid item xs={6} md={6} lg={6}>
+                    <ProfileAvatar src={avatar} />
+                </Grid>
+            </div>
+            <p style={{ textAlign: 'justify', padding: '20px' }}>{bio}</p>
+        </div>
     );
     return (
         <Grid container>
@@ -81,15 +90,10 @@ const ProfileScreen = () => {
             </Grid>
             <Grid style={{ marginTop: '20px' }} xs={12} md={12} lg={12}>
                 <BasicTabs value={value} handleChange={handleChange} />
-                {value === 0 && <Posts posts={posts} />}
-                {value === 1 && (
-                    <center>
-                        <div style={{ width: '50%' }}>
-                            <br />
-                            <Feed name="Bio" component={component} />
-                        </div>
-                    </center>
+                {value === 0 && (
+                    <BasicContainer component={<Posts posts={posts} />} />
                 )}
+                {value === 1 && <BasicContainer component={component} />}
             </Grid>
         </Grid>
     );
