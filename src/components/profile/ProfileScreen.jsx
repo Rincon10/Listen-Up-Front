@@ -33,7 +33,9 @@ const ProfileScreen = () => {
         setValue(newValue);
     };
 
-    const component = <h1 style={{ textAlign: 'justify' }}>{bio}</h1>;
+    const component = (
+        <h1 style={{ textAlign: 'justify', padding: '20px' }}>{bio}</h1>
+    );
     return (
         <Grid container>
             <Grid
@@ -82,7 +84,7 @@ const ProfileScreen = () => {
                 {value === 0 && <Posts posts={posts} />}
                 {value === 1 && (
                     <center>
-                        <div style={{ width: '700px' }}>
+                        <div style={{ width: '50%' }}>
                             <br />
                             <Feed name="Bio" component={component} />
                         </div>

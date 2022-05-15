@@ -9,8 +9,8 @@ export default function BasicTabs(props) {
     return (
         <Box>
             <Tabs value={value} onChange={handleChange}>
-                <Tab sx={{ color: { color } }} label="Posts" />
-                <Tab sx={{ color: { color } }} label="About" />
+                <Tab style={{ color: color }} label="Posts" />
+                <Tab style={{ color: color }} label="About" />
             </Tabs>
         </Box>
     );

@@ -7,7 +7,7 @@ import Sidebar from 'components/ui/Sidebar';
 const PopularScreen = () => {
     return (
         <div className="app">
-            <Sidebar />
+            <Sidebar activeIndex={1} />
             <Feed name="Popular" component={<Forums allForums={true} />} />
         </div>
     );

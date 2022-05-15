@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 
@@ -11,7 +12,7 @@ import { types } from 'components/types/types';
 
 import '../../css/sideBar.css';
 
-const Sidebar = () => {
+const Sidebar = ({ activeIndex = 0 }) => {
     const { dispatch } = useContext(UserContext);
 
     const handleLogout = () => {
@@ -23,9 +24,24 @@ const Sidebar = () => {
         <div className="sidebar">
             <LibraryMusicIcon className="sidebar__twitterIcon" />
 
-            <SidebarOption name="home" active Icon={HomeIcon} text="Home" />
-            <SidebarOption name="popular" Icon={SearchIcon} text="Popular" />
-            <SidebarOption name="profile" Icon={PersonIcon} text="My Profile" />
+            <SidebarOption
+                name="home"
+                active={activeIndex === 0}
+                Icon={HomeIcon}
+                text="Home"
+            />
+            <SidebarOption
+                name="popular"
+                active={activeIndex === 1}
+                Icon={SearchIcon}
+                text="Popular"
+            />
+            <SidebarOption
+                name="profile"
+                active={activeIndex === 3}
+                Icon={PersonIcon}
+                text="My Profile"
+            />
 
             <Button
                 variant="outlined"
@@ -37,6 +53,10 @@ const Sidebar = () => {
             </Button>
         </div>
     );
+};
+
+Sidebar.propTypes = {
+    activeIndex: PropTypes.number,
 };
 
 export default Sidebar;
