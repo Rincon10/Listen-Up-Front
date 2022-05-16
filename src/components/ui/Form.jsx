@@ -20,10 +20,7 @@ const Form = ({
     href,
     validateInfo = validateInfoLogin,
 }) => {
-    const { handleChange, handleSubmit, errors } = useForm(
-        validateInfo,
-        href === 'singup',
-    );
+    const { handleChange, handleSubmit, errors } = useForm(validateInfo, href);
 
     return (
         <Box

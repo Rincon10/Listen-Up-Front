@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Grid from '@mui/material/Grid';
 
-import OutlinedButton from 'components/commons/OutlinedButton';
 import ProfileAvatar from 'components/commons/ProfileAvatar';
 
 import BasicTabs from 'components/commons/BasicTabs';
@@ -13,6 +12,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import handleNavigate from 'components/helpers/navigate';
 import BasicContainer from 'components/ui/BasicContainer';
+import ResponsiveDialog from './commons/ResponsiveDialog';
 
 import '../../css/postBox.css';
 
@@ -30,6 +30,7 @@ const ProfileScreen = () => {
     } = user;
 
     const [value, setValue] = useState(1);
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -86,7 +87,7 @@ const ProfileScreen = () => {
                     {followersCantity + ' followers'}
                 </p>
                 <p style={{ color: 'white' }}>{`Joined: ${createdAt}`}</p>
-                <OutlinedButton label="Edit Profile" />
+                <ResponsiveDialog />
             </Grid>
             <Grid style={{ marginTop: '20px' }} xs={12} md={12} lg={12}>
                 <BasicTabs value={value} handleChange={handleChange} />

@@ -7,7 +7,7 @@ import { useContext, useState } from 'react';
 import swal from 'sweetalert';
 
 //validateFunction must be a customHook
-const useForm = (validateFunction = validateInfoLogin, loginB = true) => {
+const useForm = (validateFunction = validateInfoLogin, loginB) => {
     const initData = {
         email: '',
         nickname: '',
@@ -99,8 +99,10 @@ const useForm = (validateFunction = validateInfoLogin, loginB = true) => {
         const currentErrors = await validateFunction(data);
         setErrors(currentErrors);
         if (_.isEqual({}, currentErrors)) {
-            if (loginB) login();
-            else signUp();
+            if (loginB === 'login') signUp();
+            else if (loginB === 'singup') {
+                login();
+            } else alert('else');
         }
     };
 
