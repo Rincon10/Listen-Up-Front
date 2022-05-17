@@ -12,8 +12,8 @@ import {
 } from 'react-router-dom';
 import SignUpScreen from 'components/signup/SignUpScreen';
 import HomeScreen from 'components/home/HomeScreen';
-import ForumScreen from 'components/forum/ForumScreen';
 import PopularScreen from 'components/popular/PopularScreen';
+import ForumScreen from 'components/Forum/ForumScreen';
 
 const AppRouter = () => {
     const { user } = useContext(UserContext);
