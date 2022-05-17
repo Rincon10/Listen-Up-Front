@@ -2,7 +2,7 @@ import React from 'react';
 
 import Feed from '../../components/feed/Feed';
 import Sidebar from '../../components/ui/Sidebar';
-import Forums from '../../components/forum/Forums';
+import Forums from 'components/Forum/Forums';
 
 import '../../css/home.css';
 
